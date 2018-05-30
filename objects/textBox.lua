@@ -1,5 +1,12 @@
 textBox = {}
 
+function textBox:clear()
+    for i = 1, #self do
+        table.remove(self,1)
+    end
+end
+
+
 function textBox:create(x,y,w,action,default)
     local t = {}
     t.x = x or 1
@@ -28,9 +35,9 @@ function textBox:update(dt)
             elseif t.sel then
                 lk.setTextInput(false)
                 t.sel = false
-                t.action(t.text)
             end
         end
+        t.action(t.text)
     end
 end
 

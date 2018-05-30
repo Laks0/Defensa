@@ -39,12 +39,12 @@ function love.update(dt)
     }
     render:clear()
 
+    scenes[scene](dt)
+
     textBox:update(dt)
     buttons:update(dt)
     sliders:update(dt)
     lists:update(dt)
-
-    scenes[scene](dt)
 
     click = false
     rel = false
@@ -66,4 +66,11 @@ function love.draw()
 
     lg.setColor(255,255,255)
     lg.draw(canvas,0,0,0,wres,hres)
+end
+
+function clearAll()
+    buttons:clear()
+    lists:clear()
+    sliders:clear()
+    textBox:clear()
 end

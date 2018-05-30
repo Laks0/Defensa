@@ -1,5 +1,12 @@
 lists = {}
 
+function lists:clear()
+    for i = 1, #self do
+        table.remove(self,1)
+    end
+end
+
+
 function lists:create(x,y,options,action,def,title,color)
     local l = {}
     l.x = x

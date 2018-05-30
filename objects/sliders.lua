@@ -1,5 +1,12 @@
 sliders = {}
 
+function sliders:clear()
+    for i = 1, #self do
+        table.remove(self,1)
+    end
+end
+
+
 function sliders:create(x,y,w,action,name,ini,color)
     local s = {}
     s.x = x

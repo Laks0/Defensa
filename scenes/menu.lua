@@ -1,4 +1,6 @@
 function ld_menu()
+    clearAll()
+
     color1 = {math.random(255),math.random(255),math.random(255)}
     color2 = {math.random(255),math.random(255),math.random(255)}
     name1 = ""
@@ -41,12 +43,17 @@ function ld_menu()
     end,"Player 2")
 
 
-    lists:create(width/4,150,{"Economic","Warrior"},function (o)
-        class1 = o
-    end,2,"Class",{0,0,0})
-    lists:create(width/4*3,150,{"Economic","Warrior"},function (o)
+    lists:create(width/4,150,{"Warrior","Economic"},function (o)
         class1 = o
     end,1,"Class",{0,0,0})
+    lists:create(width/4*3,150,{"Warrior","Economic"},function (o)
+        class2 = o
+    end,2,"Class",{0,0,0})
+
+    buttons:create(width/2-100,height-100,200,100,function ()
+        scene = scene + 1
+        load[scene]()
+    end,nil,"Start game")
 end
 
 local draw = function ()
