@@ -80,6 +80,31 @@ function render:text(cape,txt,x,y,la,r,g,b,h)
     table.insert(self[c][l],ren)
 end
 
+function render:textf(cape,txt,x,y,w,format,la,r,g,b,h)
+    local c = cape or 1
+    if c > 2 then
+        c = 2
+    end
+
+    local l = la or 1
+    if l > 5 then
+        l = 1
+    end
+
+    local ren = {}
+    ren.type = "txf"
+    ren.txt = txt or ""
+    ren.x = x or 1
+    ren.y = y or 1
+    ren.format = format
+    ren.w = w
+    ren.r = r or 255
+    ren.g = g or 255
+    ren.b = b or 255
+    ren.h = h or 255
+    table.insert(self[c][l],ren)
+end
+
 function render:line(cape,x,y,x2,y2,la,r,g,b,h)
     local c = cape or 1
     if c > 2 then
@@ -137,6 +162,8 @@ function render:render(n)
                 love.graphics.circle(r.m,r.x,r.y,r.ra)
             elseif r.type == "txt" then
                 love.graphics.print(r.txt,r.x,r.y)
+            elseif r.type == "txf" then
+                love.graphics.printf(r.txt,r.x,r.y,r.w,r.format)
             elseif r.type == "img" then
                 love.graphics.draw(r.img,r.x,r.y)
             elseif r.type == "lin" then
